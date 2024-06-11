@@ -1,0 +1,41 @@
+### Description of the App
+
+This NFT Marketplace DApp allows users to create, buy, and sell non-fungible tokens (NFTs) on the Ethereum blockchain. Users can mint new NFTs by providing a unique token URI and setting a price in Ether. Once minted, the NFTs will be listed in the marketplace where other users can view and purchase them.
+
+### Example Inputs for Minting a New NFT
+
+1. **Token URI**: This is the metadata of the NFT, which usually includes a link to the image or asset associated with the NFT. You can use an image link for demonstration purposes.
+2. **Token Price**: This is the price at which you want to sell your NFT. It is set in Ether.
+
+### Example Input Values
+
+#### Token URI
+
+You can use a link to an image or an IPFS link. For example:
+```
+https://gateway.pinata.cloud/ipfs/QmT6NQ2N3YzBbD9iAEnkM5JhQ5Vd4r6pEtz7p3z5qDF4gU
+```
+
+#### Token Price
+
+Set a price for the NFT in Ether. For example:
+```
+0.05
+```
+
+### Step-by-Step Instructions
+
+1. **Connect MetaMask**: Ensure MetaMask is installed and connected to the correct network.
+2. **Mint a New NFT**:
+   - **Enter Token URI**: Copy and paste the example URI (or use your own link) into the "Enter Token URI" input field.
+   - **Enter Token Price**: Enter the price (in Ether) into the "Enter Token Price" input field.
+   - Click on the "Mint NFT" button.
+3. **View Available NFTs**: After minting, the NFT will appear in the list of available NFTs.
+4. **Buy an NFT**: Click the "Buy" button next to an NFT to purchase it. Ensure you have sufficient Ether in your MetaMask wallet.
+
+### Full Example Inputs
+
+#### Minting a New NFT
+
+- **Token URI**: `https://gateway.pinata.cloud/ipfs/QmT6NQ2N3YzBbD9iAEnkM5JhQ5Vd4r6pEtz7p3z5qDF4gU`
+- **Token Price**: `0.05`
