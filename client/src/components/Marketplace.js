@@ -1,55 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { EthContext } from '../contexts/EthContext';
 import Web3 from 'web3';
 import NFTContract from '../contracts/NFT.json';
 import MarketplaceContract from '../contracts/NFTMarketplace.json';
 import './Marketplace.css'; // Import the CSS file
 
 const Marketplace = () => {
+  const { web3, accounts } = useContext(EthContext);
   const [nfts, setNfts] = useState([]);
   const [newTokenURI, setNewTokenURI] = useState('');
   const [newTokenPrice, setNewTokenPrice] = useState('');
   const [contract, setContract] = useState(null);
   const [marketplace, setMarketplace] = useState(null);
-  const [accounts, setAccounts] = useState([]);
-  const [web3, setWeb3] = useState(null);
 
   useEffect(() => {
-    const initializeWeb3 = async () => {
-      if (window.ethereum) {
-        const web3Instance = new Web3(window.ethereum);
-        try {
-          await window.ethereum.request({ method: 'eth_requestAccounts' }); // Request account access if needed
-        } catch (error) {
-          console.error("User denied account access");
-        }
-        const accounts = await web3Instance.eth.getAccounts();
-        const networkId = await web3Instance.eth.net.getId();
+    const initializeContracts = async () => {
+      if (web3) {
+        const networkId = await web3.eth.net.getId();
         const deployedNetworkNFT = NFTContract.networks[networkId];
         const deployedNetworkMarketplace = MarketplaceContract.networks[networkId];
 
         if (deployedNetworkNFT && deployedNetworkMarketplace) {
-          const nftContract = new web3Instance.eth.Contract(
+          const nftContractInstance = new web3.eth.Contract(
             NFTContract.abi,
             deployedNetworkNFT.address
           );
-          const marketplaceContract = new web3Instance.eth.Contract(
+          const marketplaceContractInstance = new web3.eth.Contract(
             MarketplaceContract.abi,
             deployedNetworkMarketplace.address
           );
-          setWeb3(web3Instance);
-          setContract(nftContract);
-          setMarketplace(marketplaceContract);
-          setAccounts(accounts);
+          setContract(nftContractInstance);
+          setMarketplace(marketplaceContractInstance);
         } else {
           console.error('Contracts not deployed on the current network');
         }
-      } else {
-        console.error('Ethereum provider not found');
       }
     };
 
-    initializeWeb3();
-  }, []);
+    initializeContracts();
+  }, [web3]);
 
   const mintNFT = async () => {
     if (contract && accounts.length > 0 && newTokenURI && newTokenPrice) {
@@ -107,7 +96,20 @@ const Marketplace = () => {
 
   return (
     <div className="container my-5">
-      <h1 className="text-center mb-4">NFT Marketplace</h1>
+        <h1 className="text-center mb-4">NFT Marketplace</h1>
+     
+      <div className="instructions card mb-4">
+        <div className="card-body">        
+          <h5 className="card-title">Instructions</h5>
+          <p>Welcome to the NFT Marketplace! Follow these steps to get started:</p>
+          <ol>
+            <li>Ensure you have MetaMask installed and connected to the appropriate network.</li>
+            <li>Mint a new NFT by entering the token URI and the price in ETH.</li>
+            <li>View available NFTs and purchase the ones you like.</li>
+          </ol>
+          <p>If you encounter any issues, check the console for error messages and ensure your contracts are deployed correctly.</p>
+        </div>
+      </div>
       <div className="card mb-4">
         <div className="card-body">
           <h5 className="card-title">Mint a New NFT</h5>

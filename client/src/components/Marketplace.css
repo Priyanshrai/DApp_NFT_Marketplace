@@ -2,13 +2,14 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  background: linear-gradient(135deg, #63a0f0 0%, #85fd9f 100%);
   color: #333;
   margin: 0;
 }
 
 .container {
   max-width: 1200px;
+  margin: 0 auto;
 }
 
 .card {
@@ -52,4 +53,43 @@ body {
 .btn-success:hover {
   background-color: #218838;
   border-color: #1e7e34;
+}
+
+.instructions {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h5 {
+  color: #333;
+}
+
+p, ol {
+  color: #555;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+ol {
+  padding-left: 20px;
+}
+
+.card img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-body h5 {
+  margin-bottom: 10px;
+}
+
+.card-body p {
+  margin-bottom: 20px;
 }
