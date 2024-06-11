@@ -2,7 +2,8 @@
 
 A decentralized NFT marketplace application built on the Ethereum blockchain using Solidity, React, Web3.js, and Bootstrap. This DApp allows users to mint, buy, and sell NFTs in a transparent and secure manner.
 
-![NFT Marketplace DApp Screenshot](screenshot.png)
+![NFT Marketplace DApp Screenshot](https://github.com/Priyanshrai/DApp_NFT_Marketplace/assets/105690577/06b7db3e-3c3d-4c8e-ab22-4313e6f3bac7)
+
 
 ## Features
 
